@@ -1,0 +1,17 @@
+<%# We also want to replace any instance variables with a local variable, which we can define when we render the partial. We'll do this by replacing @product with product. %>
+<%# This is a partial %>
+<%= form_with model: product do |form| %>
+    <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div>
+        <%= form.label :description, style: "display: block" %>
+        <%= form.rich_text_area :description%>
+    </div>
+
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>

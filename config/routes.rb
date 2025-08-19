@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   # this tells rails that the homepage localhost:3000 renders the products page.
   root "products#index"
 
