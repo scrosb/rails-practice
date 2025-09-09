@@ -1,11 +1,25 @@
-<h1><%= t ".title" %></h1>
 
-<%= link_to "New product", new_product_path if authenticated? %>
 
-<div id="products">
-  <% @products.each do |product| %>
-    <div>
-      <%= link_to product.name, product%>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="twelve columns">
+        <h1><%= t ".title" %></h1>
+          <%= link_to "New Recipe", new_product_path, class:"button button-primary" if authenticated? %>
+        <br>
+        <ul class="recipe-list">
+            <% @products.each do |product| %>
+              <li>
+                <%= link_to product.name, product, class: "recipe-link" %>
+                <span class="recipe-meta"> Roasts: &nbsp;<%= product.inventory_count %> </span>
+              </li>
+            <% end %>
+        </ul>
     </div>
-  <% end %>
+  </div>
 </div>
+

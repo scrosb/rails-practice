@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get "pages/landing"
+
+  # this tells rails that the homepage localhost:3000 renders the products page.
+  root "pages#landing"
+  resources :products
+
   resource :session
   resources :passwords, param: :token
-  # this tells rails that the homepage localhost:3000 renders the products page.
-  root "products#index"
-  resources :products
   # get "/products", to: "products#index"
 
   # get "/products/new" to: "products#new"

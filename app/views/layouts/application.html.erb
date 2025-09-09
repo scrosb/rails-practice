@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Store" %></title>
+    <title><%= content_for(:title) || "Chuck Roast" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -12,10 +12,7 @@
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <%= favicon_link_tag asset_path('favicon.ico') %>
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
@@ -25,10 +22,14 @@
   <body>
     <div class="notice"><%= notice %></div>
     <nav>
-      <%= link_to "Home", root_path%>
-      <%= link_to "Login", new_session_path unless authenticated?%>
-      <%= button_to "Log out", session_path, method: :delete if authenticated? %>
+      <%= link_to "Login", new_session_path, class: "button u-pull-right" unless authenticated? %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="u-pull-right"><%= button_to "Log out", session_path, method: :delete, class:"button-delete" if authenticated? %></div>
+      
+      <%= link_to "Home", root_path, class: "button u-pull-right" %>
     </nav>
+    <div class="u-cf"></div>
+
     <main>
        <%= yield %>
     </main>
